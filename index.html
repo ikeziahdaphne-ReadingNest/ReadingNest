@@ -39,12 +39,60 @@ select{min-width:160px;flex:1}
 .title{font-weight:700;font-size:17px;line-height:1.25;margin-bottom:6px}
 .author{font-size:13px;color:var(--muted);min-height:18px;margin-bottom:8px}
 .meta{font-size:12px;color:var(--muted);margin-bottom:7px}.price-line{display:flex;justify-content:space-between;gap:8px;font-size:13px;margin:2px 0 9px;color:var(--ink)}.price-line strong{font-size:14px}.rental-note{font-size:11px;color:var(--muted);margin-bottom:10px}
-.status{font-size:12px;font-weight:700;color:var(--good);margin-bottom:10px}
+.status{font-size:12px;font-weight:700;color:var(--good);margin-bottom:10px}.status.rented{color:#9b553f}.return-date{font-size:12px;color:#9b553f;margin-top:-5px;margin-bottom:10px}
 button{border:0;border-radius:9px;padding:10px 11px;background:var(--accent);color:white;font:inherit;cursor:pointer;margin-top:auto}
 button:hover{background:#654a37}
 .empty{grid-column:1/-1;text-align:center;padding:50px;color:var(--muted)}
 footer{border-top:1px solid var(--line);text-align:center;padding:25px;color:var(--muted);font-size:13px}
 @media(max-width:520px){.brand{font-size:30px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding-left:12px;padding-right:12px}.cover-wrap{height:220px}.title{font-size:15px}.controls-inner{flex-direction:column}input,select{width:100%}}
+
+
+.quick-filters{max-width:1180px;margin:0 auto;padding:12px 18px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.quick-filters .quick-label{font-size:13px;color:var(--muted);font-weight:700;margin-right:2px}
+.quick-filter{margin:0;background:#eee4d8;color:var(--ink);border:1px solid #e0d1c0;border-radius:999px;padding:8px 13px;font-size:13px;white-space:nowrap}
+.quick-filter:hover,.quick-filter.active{background:var(--accent);color:white}
+.reading-shelves{max-width:1180px;margin:26px auto;padding:34px 18px}
+.shelves-heading{text-align:center;margin:0 auto 26px;max-width:760px}
+.shelves-heading h2{font-size:32px;margin:0 0 10px}
+.shelves-heading p{color:var(--muted);line-height:1.65;margin:0}
+.shelf{padding:22px 0 26px;border-bottom:1px solid var(--line)}
+.shelf:last-child{border-bottom:0}
+.shelf-top{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:14px}
+.shelf-top h3{margin:0 0 5px;font-size:23px}.shelf-top p{margin:0;color:var(--muted);line-height:1.5}
+.shelf-count{font-size:12px;color:var(--muted);white-space:nowrap}
+.shelf-books{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:14px}
+.shelf-book{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0;box-shadow:0 3px 12px rgba(70,50,35,.04)}
+.shelf-cover{height:205px;background:#eee5da;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.shelf-cover img{width:100%;height:100%;object-fit:cover}
+.shelf-book-info{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.shelf-book-info strong{line-height:1.3}.shelf-author,.shelf-status{font-size:12px;color:var(--muted)}
+.book-recommendation{font-size:13px;line-height:1.5;color:var(--muted);margin:6px 0 8px}
+.shelf-recommendation{font-size:13px;line-height:1.5;color:var(--text);margin:3px 0 5px}
+.shelf-fee{font-size:13px}.shelf-book-info button{margin-top:auto;font-size:13px}
+.discovery-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:1000px;margin:0 auto 18px}
+.discovery-option{margin:0;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:17px 16px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:14px;box-shadow:0 3px 12px rgba(70,50,35,.04);min-height:135px}
+.discovery-option:hover,.discovery-option.active{background:#f1e6d9;border-color:var(--accent2);color:var(--ink)}
+.discovery-option strong{font-size:16px;line-height:1.3}.discovery-option span:last-child{font-size:13px;line-height:1.45;color:var(--muted);font-weight:400}.discovery-emoji{font-size:23px}
+.shelf-selection-message{text-align:center;color:var(--muted);font-size:14px;padding:12px;margin:0 auto;max-width:760px}
+#shelves-container[hidden]{display:none}
+@media(max-width:760px){.discovery-options{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.discovery-option{padding:13px 12px;min-height:140px}.discovery-option strong{font-size:14px}}
+@media(max-width:420px){.discovery-options{grid-template-columns:1fr}.discovery-option{min-height:0}}
+
+@media(max-width:760px){.reading-shelves{margin:22px 0;padding:24px 12px}.shelves-heading h2{font-size:26px}.shelf-top{align-items:flex-start;flex-direction:column;gap:6px}.shelf-books{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.shelf-cover{height:190px}.shelf-book-info{padding:10px}.shelf-book-info strong{font-size:14px}}
+
+
+/* Request a book that is not currently in the catalogue */
+.request-book-panel{max-width:850px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px;box-shadow:0 5px 18px rgba(70,50,35,.05)}
+.request-book-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.request-field{display:flex;flex-direction:column;gap:6px;min-width:0}
+.request-field.full{grid-column:1/-1}
+.request-field label{font-size:14px;font-weight:700}
+.request-field input,.request-field textarea,.request-field select{width:100%;min-width:0;border:1px solid #d9cabb;border-radius:10px;padding:12px;background:white;color:var(--ink);font:inherit}
+.request-field textarea{min-height:95px;resize:vertical}
+.request-book-form .request-submit{grid-column:1/-1;padding:13px 18px;margin-top:2px}
+.request-help{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 20px}
+.request-disclaimer{font-size:13px;line-height:1.6;color:var(--muted);margin:15px 0 0}
+@media(max-width:560px){.request-book-panel{padding:18px}.request-book-form{grid-template-columns:1fr}.request-field.full,.request-book-form .request-submit{grid-column:auto}}
 
 /* Reading Nest multi-page navigation & sections */
 html{scroll-behavior:smooth;scroll-padding-top:78px}
@@ -82,14 +130,40 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
   </div>
   <div class="nestline"></div>
 </header>
-<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="#home">READING NEST</a><div class="nav-links"><a href="#home">Home</a><a href="#browse">Browse Books</a><a href="#plans">Plans</a><a href="#contact">Contact Us</a></div></div></nav>
+<nav class="nav"><div class="nav-inner"><a class="nav-brand" href="#home">READING NEST</a><div class="nav-links"><a href="#home">Home</a><a href="#find-book">Help me find a book</a><a href="#browse">Browse Books</a><a href="#request-book">Request a Book</a><a href="#plans">Rental Plans</a><a href="#contact">Contact Us</a></div></div></nav>
 
 <section id="home" class="hero">
   <div><div class="eyebrow">A cozy neighbourhood reading nest</div><h2>Find your next story and bring it home.</h2><p>Welcome to Reading Nest — a cozy home library where stories are shared, books find new readers, and every generation has a place to read. Browse our collection, check the lending price, and request your next story through WhatsApp.</p><div class="hero-actions"><a class="cta" href="#browse">Browse the books</a><a class="cta secondary" href="#plans">View plans</a></div></div>
   <div class="hero-card"><div class="big">📚</div><strong>Stories for every generation.</strong><p>Curated books for children, teens and adults — all in one neighbourhood collection.</p></div>
 </section>
 <section class="section alt"><div class="section-inner"><h2>How Reading Nest works</h2><p class="section-lead">Simple, friendly and local. Choose a book, see its price-based lending fee, and send us a request.</p><div class="steps"><div class="step"><div class="num">01</div><h3>Choose</h3><p>Browse the collection and use the search and filters to find your next read.</p></div><div class="step"><div class="num">02</div><h3>Request</h3><p>Tap “Request to book” and send the pre-filled message to Reading Nest on WhatsApp.</p></div><div class="step"><div class="num">03</div><h3>Read & return</h3><p>Collect your book, enjoy your reading time, and return it within the agreed borrowing period.</p></div></div></div></section>
+<section id="find-book" class="reading-shelves">
+  <div class="shelves-heading">
+    <h2>Help me find a book</h2>
+    <p>Not sure what to read next? Choose the option that feels most like you, and we’ll show you a handpicked shelf from Reading Nest.</p>
+  </div>
+  <div class="discovery-options" role="group" aria-label="Choose the kind of books you are looking for">
+    <button type="button" class="discovery-option" data-shelf="gentle"><span class="discovery-emoji">🌱</span><strong>I’m new to reading</strong><span>Help me find an easy, welcoming place to start.</span></button>
+    <button type="button" class="discovery-option" data-shelf="lasting"><span class="discovery-emoji">💛</span><strong>Stories that stay with me</strong><span>I want a moving story to think about afterwards.</span></button>
+    <button type="button" class="discovery-option" data-shelf="mystery"><span class="discovery-emoji">🔎</span><strong>Mystery & suspense</strong><span>Give me twists, secrets and page-turners.</span></button>
+    <button type="button" class="discovery-option" data-shelf="love"><span class="discovery-emoji">💕</span><strong>Love, life & relationships</strong><span>I’m in the mood for romance and real-life connections.</span></button>
+    <button type="button" class="discovery-option" data-shelf="children"><span class="discovery-emoji">🧸</span><strong>Books for little readers</strong><span>Find stories to enjoy with a child.</span></button>
+    <button type="button" class="discovery-option" data-shelf="curious"><span class="discovery-emoji">💡</span><strong>Non-fiction & curious minds</strong><span>I want to learn, reflect or explore new ideas.</span></button>
+  </div>
+  <div id="shelf-selection-message" class="shelf-selection-message" aria-live="polite">Choose a category above to see your handpicked books.</div>
+  <div id="shelves-container" class="shelves-container" hidden></div>
+</section>
+
 <section id="browse" class="catalogue-heading"><h2>Browse the collection</h2><p>Search by title or author, filter by genre, author and availability, and see the price-based lending fee for each book.</p></section>
+<div class="quick-filters" aria-label="Quick book filters">
+  <span class="quick-label">Quick filters:</span>
+  <button type="button" class="quick-filter" data-quick="all">All books</button>
+  <button type="button" class="quick-filter" data-quick="available">Available now</button>
+  <button type="button" class="quick-filter" data-quick="children">Children’s books</button>
+  <button type="button" class="quick-filter" data-quick="fiction">Fiction</button>
+  <button type="button" class="quick-filter" data-quick="nonfiction">Non-fiction</button>
+  <button type="button" class="quick-filter" data-quick="reset">Clear filters</button>
+</div>
 <section class="controls">
   <div class="controls-inner">
     <input id="search" type="search" placeholder="Search by book title or author…">
@@ -99,6 +173,7 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
       <option value="all">All availability</option>
       <option value="available">Available</option>
       <option value="requested">Requested</option>
+      <option value="rented">Rented out</option>
     </select>
   </div>
 </section>
@@ -106,18 +181,40 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
 <div class="summary" id="summary"></div>
 <main class="grid" id="grid"></main>
 
+
+<section id="request-book" class="section alt">
+  <div class="section-inner">
+    <h2>Can’t find the book you’re looking for?</h2>
+    <p class="section-lead">Tell us which book you have in mind, even if it isn’t part of the Reading Nest catalogue yet. We’ll check whether we can source it and get back to you.</p>
+    <div class="request-book-panel">
+      <p class="request-help">Share the title and, if you know it, the author. The other details are optional.</p>
+      <form id="outside-catalogue-form" class="request-book-form">
+        <div class="request-field full"><label for="outside-title">Book title *</label><input id="outside-title" name="title" type="text" placeholder="Enter the book title" required maxlength="160"></div>
+        <div class="request-field"><label for="outside-author">Author (if known)</label><input id="outside-author" name="author" type="text" placeholder="Author's name" maxlength="120"></div>
+        <div class="request-field"><label for="outside-name">Your name *</label><input id="outside-name" name="readerName" type="text" placeholder="What should we call you?" required maxlength="100"></div>
+        <div class="request-field"><label for="outside-mobile">Mobile number *</label><input id="outside-mobile" name="mobile" type="tel" placeholder="10-digit mobile number" required inputmode="tel" autocomplete="tel" pattern="[0-9+() -]{10,18}" title="Enter a valid mobile number, including country code if needed." maxlength="18"></div>
+        <div class="request-field"><label for="outside-language">Preferred language / edition</label><input id="outside-language" name="language" type="text" placeholder="e.g. English, Tamil, paperback" maxlength="120"></div>
+        <div class="request-field full"><label for="outside-notes">Anything else? (optional)</label><textarea id="outside-notes" name="notes" placeholder="Any extra details that may help us identify the book"></textarea></div>
+        <button class="request-submit" type="submit">Send book request on WhatsApp</button>
+      </form>
+      <p class="request-disclaimer">Sending a request doesn’t guarantee the book will be added to the collection. We’ll check availability and sourcing options before confirming.</p>
+    </div>
+  </div>
+</section>
+
 <section id="plans" class="section alt"><div class="section-inner"><h2>Reading Nest Lending</h2><p class="section-lead">Membership gives you access to the collection; each book has a simple lending fee based on its printed/reference MRP.</p><div class="plans">
 <div class="plan featured"><span class="badge">Our model</span><h3>Membership</h3><div class="price">₹199</div><div class="duration">14 days</div><ul><li>Borrow 3 books initially, then 2 books at a time</li><li>14-day borrowing period</li><li>Book fee is calculated separately</li><li>Access to the Reading Nest collection</li></ul></div>
 <div class="plan"><h3>Book Lending Fee</h3><div class="price">10% of MRP</div><div class="duration">Per book · 14 days</div><ul><li>Minimum lending fee: ₹20</li><li>Example: ₹499 MRP → ₹50</li><li>Example: ₹599 MRP → ₹60</li><li>Shown on every book card</li></ul></div>
 <div class="plan"><h3>Security Deposit</h3><div class="price">₹400</div><div class="duration">One-time · refundable</div><ul><li>Applies to membership borrowing</li><li>Refundable when membership borrowing ends</li><li>Held as a book-security deposit</li><li>Separate from lending fees</li></ul></div>
 </div><div class="note"><strong>How it works:</strong> Membership ₹199 + refundable ₹400 deposit + the lending fee for each book borrowed. Lending fee = 10% of the book's reference MRP, with a minimum of ₹20, for 14 days.</div></div></section>
-<section id="contact" class="section"><div class="section-inner"><h2>Contact Us</h2><p class="section-lead">Have a question, want to join, or need help choosing a book? We’d love to hear from you.</p><div class="contact-grid"><div class="contact-card"><h3>📱 WhatsApp</h3><p>Send us a message for book requests, membership questions or general enquiries.</p><a class="contact-button" href="https://wa.me/919840888568" target="_blank">Chat on WhatsApp</a></div><div class="contact-card"><h3>📚 Book requests</h3><p>Find a book in the catalogue and use its “Request to book” button to send us the title automatically.</p><a class="contact-button" href="#browse">Browse books</a></div></div></div></section>
+<section id="contact" class="section"><div class="section-inner"><h2>Contact Us</h2><p class="section-lead">Have a question, want to join, or need help choosing a book? We’d love to hear from you.</p><div class="contact-grid"><div class="contact-card"><h3>📱 Phone / WhatsApp</h3><p>For book requests, membership questions or general enquiries.</p><p style="margin-top:10px"><strong>+91-9003272817</strong></p><a class="contact-button" href="https://wa.me/9003272817" target="_blank">Chat on WhatsApp</a></div><div class="contact-card"><h3>✉️ Email</h3><p>Write to us and we’ll be happy to help.</p><p style="margin-top:10px"><strong>readingnester@gmail.com</strong></p><a class="contact-button" href="mailto:readingnester@gmail.com">Email Reading Nest</a></div></div><div class="note">Looking for a particular story? Browse our catalogue and use the “Request to book” button on the book card.</div></div></section>
 
 <footer>Reading Nest · Stories for every generation.</footer>
 
 <script>
+// To mark a book as rented, change its status to "Rented out" and add returnDate: "YYYY-MM-DD". Example: status: "Rented out", returnDate: "2026-11-06".
 const BOOKS = [{"id": 1, "title": "Not quite nice", "author": "Celia Imrie", "condition": "Old", "cover": "covers/Cover_1.jpg", "status": "Available", "mrp": 550, "rental": 55}, {"id": 2, "title": "The Spanish Love deception", "author": "Elena Armas", "condition": "Good", "cover": "covers/Cover_2.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 3, "title": "The Hundred year old man", "author": "Jonas Jonasson", "condition": "Good", "cover": "covers/Cover_3.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 4, "title": "Emma", "author": "Jane Austen", "condition": "Good", "cover": "covers/Cover_4.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 5, "title": "Memory Keeper's daughter", "author": "Kim Edwards", "condition": "Good", "cover": "covers/Cover_5.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 6, "title": "A Horse walks into a bar", "author": "David Grossman", "condition": "Good", "cover": "covers/Cover_6.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 7, "title": "A christmas cracker", "author": "Trisha Ashley", "condition": "Good", "cover": "covers/Cover_7.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 8, "title": "Kafka on the shore", "author": "Haruki Marukami", "condition": "Good", "cover": "covers/Cover_8.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 9, "title": "Men are from Mars, women are from Venus", "author": "John Gray", "condition": "Good", "cover": "covers/Cover_9.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 10, "title": "The story of my experiment with truth", "author": "Mahatma Gandhi", "condition": "Good", "cover": "covers/Cover_10.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 11, "title": "Spare", "author": "Prince Harry", "condition": "Good", "cover": "covers/Cover_11.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 12, "title": "Who says you can't?", "author": "Daniel Chidiac", "condition": "Good", "cover": "covers/Cover_12.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 13, "title": "Friends, lovers and the big terrible thing", "author": "Matthew Perry", "condition": "Good", "cover": "covers/Cover_13.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 14, "title": "Mein Kampf", "author": "Adolf Hitler", "condition": "Good", "cover": "covers/Cover_14.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 15, "title": "MGR A life", "author": "Kannan Rajarathinam", "condition": "Good", "cover": "covers/Cover_15.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 16, "title": "Sapiens", "author": "Yuval Noah Harari", "condition": "Good", "cover": "covers/Cover_16.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 17, "title": "The Agincourt bride", "author": "Joanna Hickson", "condition": "Good", "cover": "covers/Cover_17.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 18, "title": "Three men in a boat", "author": "Jerome K Jerome", "condition": "Good", "cover": "covers/Cover_18.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 19, "title": "Cry silent tears", "author": "Joe Peters", "condition": "Good", "cover": "covers/Cover_19.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 20, "title": "Paradise lost", "author": "John Milton", "condition": "Good", "cover": "covers/Cover_20.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 21, "title": "Ugly", "author": "Constance Briscoe", "condition": "Good", "cover": "covers/Cover_21.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 22, "title": "The afghan", "author": "Frederick Forsyth", "condition": "Good", "cover": "covers/Cover_22.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 23, "title": "The great gatsby", "author": "F.Scott Fitzgerald", "condition": "Good", "cover": "covers/Cover_23.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 24, "title": "True love and other lies", "author": "Whitney Gaskell", "condition": "Good", "cover": "covers/Cover_24.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 25, "title": "How to talk to anyone", "author": "Leil Lowndes", "condition": "Good", "cover": "covers/Cover_25.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 26, "title": "Gung Ho", "author": "Ken Blanchard", "condition": "Good", "cover": "covers/Cover_26.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 27, "title": "The green mile", "author": "Stephen King", "condition": "Good", "cover": "covers/Cover_27.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 28, "title": "Normal people", "author": "Sally Rooney", "condition": "Good", "cover": "covers/Cover_28.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 29, "title": "A gentleman in Moscow", "author": "Amor Towles", "condition": "Good", "cover": "covers/Cover_29.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 30, "title": "Us", "author": "David Nicholls", "condition": "Good", "cover": "covers/Cover_30.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 31, "title": "Twist of Gold", "author": "Michael Morpurgo", "condition": "Good", "cover": "covers/Cover_31.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 32, "title": "In the midst of life", "author": "Jennifer Worth", "condition": "Good", "cover": "covers/Cover_32.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 33, "title": "The stylist", "author": "Roxie Nixon", "condition": "Good", "cover": "covers/Cover_33.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 34, "title": "Killer queens", "author": "Rebecca Chance", "condition": "Good", "cover": "covers/Cover_34.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 35, "title": "Zero day", "author": "David Baldacci", "condition": "Good", "cover": "covers/Cover_35.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 36, "title": "Private", "author": "James Patterson", "condition": "Good", "cover": "covers/Cover_36.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 37, "title": "Just the three of us", "author": "Clare Dowling", "condition": "Good", "cover": "covers/Cover_37.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 38, "title": "Ex-girlfriends united", "author": "Matt Dunn", "condition": "Good", "cover": "covers/Cover_38.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 39, "title": "A place called perfect", "author": "Helena Duggan", "condition": "Good", "cover": "covers/Cover_39.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 40, "title": "Out on a limb", "author": "Hannah - Bonam Young", "condition": "Good", "cover": "covers/Cover_40.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 41, "title": "Ready or not", "author": "Meg Cabot", "condition": "Good", "cover": "covers/Cover_41.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 42, "title": "Can't hurt me", "author": "David Goggins", "condition": "Good", "cover": "covers/Cover_42.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 43, "title": "Think like a monk", "author": "Jay Shetty", "condition": "Good", "cover": "covers/Cover_43.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 44, "title": "Jackdaws", "author": "Ken Follett", "condition": "Good", "cover": "covers/Cover_44.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 45, "title": "A column of fire", "author": "Ken Follett", "condition": "Good", "cover": "covers/Cover_45.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 46, "title": "World without end", "author": "Ken Follett", "condition": "Good", "cover": "covers/Cover_46.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 47, "title": "The hammer of Eden", "author": "Ken Follett", "condition": "Good", "cover": "covers/Cover_47.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 48, "title": "Fall of giants", "author": "Ken Follett", "condition": "Good", "cover": "covers/Cover_48.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 49, "title": "Whiteout", "author": "Ken Follett", "condition": "Good", "cover": "covers/Cover_49.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 50, "title": "Toast", "author": "Nigel Slater", "condition": "Good", "cover": "covers/Cover_50.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 51, "title": "The heavenly italian ice cream shop", "author": "Abby Clements", "condition": "Good", "cover": "covers/Cover_51.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 52, "title": "Somebody I used to know", "author": "Wendy Mitchel", "condition": "Good", "cover": "covers/Cover_52.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 53, "title": "13 reasons why", "author": "Jay Asher", "condition": "Good", "cover": "covers/Cover_53.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 54, "title": "Swing time", "author": "Zadie Smith", "condition": "Good", "cover": "covers/Cover_54.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 55, "title": "Where the crawdads sing", "author": "Delia Owens", "condition": "Good", "cover": "covers/Cover_55.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 56, "title": "Snow globe", "author": "Judith Kinghorn", "condition": "Good", "cover": "covers/Cover_56.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 57, "title": "Before we say goodbye", "author": "Toshikazu Kawaguchi", "condition": "Good", "cover": "covers/Cover_57.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 58, "title": "Part of the family", "author": "Charlotte Philby", "condition": "Good", "cover": "covers/Cover_58.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 59, "title": "The family man", "author": "T J Lebbon", "condition": "Good", "cover": "covers/Cover_59.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 60, "title": "Winter in Madrid", "author": "CJ Sansom", "condition": "Good", "cover": "covers/Cover_60.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 61, "title": "One for the baby", "author": "Tony Parsons", "condition": "Good", "cover": "covers/Cover_61.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 62, "title": "A game of thrones", "author": "George RR Martin", "condition": "Good", "cover": "covers/Cover_62.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 63, "title": "The keeper of stories", "author": "Sally Page", "condition": "Good", "cover": "covers/Cover_63.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 64, "title": "The boy in the striped pyjamas", "author": "John Boyne", "condition": "Good", "cover": "covers/Cover_64.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 65, "title": "1000+ little habits", "author": "Marc & Angel Chernoff", "condition": "Good", "cover": "covers/Cover_65.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 66, "title": "The memory book", "author": "Rowan Coleman", "condition": "Good", "cover": "covers/Cover_66.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 67, "title": "The love of my afterlife", "author": "Kirsty Greenwood", "condition": "Good", "cover": "covers/Cover_67.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 68, "title": "Modern Love", "author": "Daniel Jones", "condition": "Good", "cover": "covers/Cover_68.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 69, "title": "The book theif", "author": "Markus Zusak", "condition": "Good", "cover": "covers/Cover_69.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 70, "title": "The Magic strings of Frankie Pesto", "author": "Mitch Albom", "condition": "Good", "cover": "covers/Cover_70.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 71, "title": "The last sweet mile", "author": "Allen Levi", "condition": "Good", "cover": "covers/Cover_71.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 72, "title": "Second time lucky", "author": "Sophie King", "condition": "Good", "cover": "covers/Cover_72.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 73, "title": "Finding Chika", "author": "Mitch Albom", "condition": "Good", "cover": "covers/Cover_73.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 74, "title": "Eleanor Oliphant is completely fine", "author": "Gail Honeyman", "condition": "Good", "cover": "covers/Cover_74.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 75, "title": "The little princess", "author": "Frances Hodgson Burnett", "condition": "Good", "cover": "covers/Cover_75.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 76, "title": "Things my son needs to know about the world", "author": "Fredrick Backman", "condition": "Good", "cover": "covers/Cover_76.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 77, "title": "The nowhere man", "author": "Gregg Hurwitz", "condition": "Good", "cover": "covers/Cover_77.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 78, "title": "A boy made of blocks", "author": "Keith Stuart", "condition": "Good", "cover": "covers/Cover_78.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 79, "title": "The dark room", "author": "Rachel Seifert", "condition": "Good", "cover": "covers/Cover_79.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 80, "title": "The knife of never letting go", "author": "Partick Ness", "condition": "Good", "cover": "covers/Cover_80.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 81, "title": "What does it feel like ?", "author": "Shopie Kinsella", "condition": "Good", "cover": "covers/Cover_81.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 82, "title": "The last letter", "author": "Rebecca Yarros", "condition": "Good", "cover": "covers/Cover_82.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 83, "title": "Riot", "author": "Shashi Tharoor", "condition": "Good", "cover": "covers/Cover_83.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 84, "title": "The day the nazis came", "author": "Stephen R.Matthews", "condition": "Good", "cover": "covers/Cover_84.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 85, "title": "What really happened in Wuhan ?", "author": "Sharri Markson", "condition": "Good", "cover": "covers/Cover_85.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 86, "title": "The boy who followed his father into Auschwitz", "author": "Jeremy Dronfield", "condition": "Good", "cover": "covers/Cover_86.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 87, "title": "My friends", "author": "Fredrick Backman", "condition": "Good", "cover": "covers/Cover_87.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 88, "title": "Anxious people", "author": "Fredrick Backman", "condition": "Good", "cover": "covers/Cover_88.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 89, "title": "Counting Miracles", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_89.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 90, "title": "Uncommon Type", "author": "Tom Hanks", "condition": "Good", "cover": "covers/Cover_90.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 91, "title": "The Correspondent", "author": "Virginia Evans", "condition": "Good", "cover": "covers/Cover_91.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 92, "title": "My Hygge Home", "author": "Meik Wiking", "condition": "Good", "cover": "covers/Cover_92.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 93, "title": "The curious incident of the dog in the night time", "author": "Mark Haddon", "condition": "Good", "cover": "covers/Cover_93.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 94, "title": "The boy that never was", "author": "Karen Perry", "condition": "Good", "cover": "covers/Cover_94.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 95, "title": "The Chocolate Lover's wedding", "author": "Carole Matthews", "condition": "Good", "cover": "covers/Cover_95.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 96, "title": "A patchwork family", "author": "Cathy Bramley", "condition": "Good", "cover": "covers/Cover_96.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 97, "title": "Here comes the girls", "author": "Milly Johnson", "condition": "Good", "cover": "covers/Cover_97.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 98, "title": "Birdsong", "author": "Sebastian Faulks", "condition": "Good", "cover": "covers/Cover_98.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 99, "title": "Ikigai", "author": "Hector Garcia", "condition": "Good", "cover": "covers/Cover_99.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 100, "title": "Every star that falls", "author": "Michael Thomas Ford", "condition": "Good", "cover": "covers/Cover_100.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 101, "title": "Women at war", "author": "Jan Casey", "condition": "Good", "cover": "covers/Cover_101.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 102, "title": "The self-preservation society", "author": "Kate Harrison", "condition": "Good", "cover": "covers/Cover_102.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 103, "title": "The night rainbow", "author": "Claire King", "condition": "Good", "cover": "covers/Cover_103.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 104, "title": "Can love happen twice?", "author": "Ravinder Singh", "condition": "Good", "cover": "covers/Cover_104.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 105, "title": "I too had a lover story", "author": "Ravinder Singh", "condition": "Good", "cover": "covers/Cover_105.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 106, "title": "The bridge across forever", "author": "Richard Bach", "condition": "Good", "cover": "covers/Cover_106.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 107, "title": "Blind dates and other disasters", "author": "", "condition": "Good", "cover": "covers/Cover_107.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 108, "title": "In the woods", "author": "Tana French", "condition": "Good", "cover": "covers/Cover_108.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 109, "title": "The bookshop on rosemary lane", "author": "Ellen Berry", "condition": "Good", "cover": "covers/Cover_109.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 110, "title": "Room", "author": "Emma Donoghue", "condition": "Good", "cover": "covers/Cover_110.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 111, "title": "Crowded marriage", "author": "Catherine Alliott", "condition": "Good", "cover": "covers/Cover_111.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 112, "title": "Little girl lost", "author": "Barbie Probert Wright", "condition": "Good", "cover": "covers/Cover_112.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 113, "title": "Salem Falls", "author": "Jodi Piccoult", "condition": "Good", "cover": "covers/Cover_113.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 114, "title": "From notting hill to new york...actually", "author": "Ali McNammara", "condition": "Good", "cover": "covers/Cover_114.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 115, "title": "All Together now", "author": "Gill Hornby", "condition": "Good", "cover": "covers/Cover_115.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 116, "title": "Boiling a frog", "author": "Christopher Brookmyre", "condition": "Good", "cover": "covers/Cover_116.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 117, "title": "Labyrinth", "author": "Kate Mosse", "condition": "Good", "cover": "covers/Cover_117.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 118, "title": "Jane Eyre", "author": "Charlotte Bronte", "condition": "Good", "cover": "covers/Cover_118.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 119, "title": "Reasons to stay alive", "author": "Matt Haig", "condition": "Good", "cover": "covers/Cover_119.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 120, "title": "Eleanor & Park", "author": "Rainbow Rowell", "condition": "Good", "cover": "covers/Cover_120.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 121, "title": "Welcome to the Hyunam-Dong Bookshop", "author": "Hwang Bo-Reum", "condition": "Good", "cover": "covers/Cover_121.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 122, "title": "The Da Vinci Code", "author": "Dan Brown", "condition": "Good", "cover": "covers/Cover_122.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 123, "title": "The Godfather", "author": "Mario Puzo", "condition": "Good", "cover": "covers/Cover_123.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 124, "title": "We need to talk about Kevin", "author": "Lionel Shriver", "condition": "Good", "cover": "covers/Cover_124.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 125, "title": "All the bright places", "author": "Jennifer Niven", "condition": "Good", "cover": "covers/Cover_125.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 126, "title": "I heart Paris", "author": "Lindsey Kelk", "condition": "Good", "cover": "covers/Cover_126.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 127, "title": "Us against you", "author": "Fredrick Backman", "condition": "Good", "cover": "covers/Cover_127.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 128, "title": "The winners", "author": "Fredrick Backman", "condition": "Good", "cover": "covers/Cover_128.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 129, "title": "Looking for Alaska", "author": "John Green", "condition": "Good", "cover": "covers/Cover_129.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 130, "title": "Will Grayson, Will grayson", "author": "John Green", "condition": "Good", "cover": "covers/Cover_130.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 131, "title": "A man called Ove", "author": "Fredrick Backman", "condition": "Good", "cover": "covers/Cover_131.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 132, "title": "Bridesmaid", "author": "Jane Costello", "condition": "Good", "cover": "covers/Cover_132.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 133, "title": "All this time", "author": "Mikki Daughtry", "condition": "Good", "cover": "covers/Cover_133.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 134, "title": "Polly", "author": "Freya North", "condition": "Good", "cover": "covers/Cover_134.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 135, "title": "The summer of secrets", "author": "Alison Lucy", "condition": "Good", "cover": "covers/Cover_135.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 136, "title": "Good husband material", "author": "Trisha Ashley", "condition": "Good", "cover": "covers/Cover_136.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 137, "title": "Hummingbirds", "author": "Steve Burrows", "condition": "Good", "cover": "covers/Cover_137.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 138, "title": "Princess in training", "author": "Cabot", "condition": "Good", "cover": "covers/Cover_138.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 139, "title": "Love and other impossible pursuits", "author": "Ayelet Waldman", "condition": "Good", "cover": "covers/Cover_139.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 140, "title": "Ugly Love", "author": "Colleen Hoover", "condition": "Good", "cover": "covers/Cover_140.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 141, "title": "You were my crush", "author": "Durjoy Dutta", "condition": "Good", "cover": "covers/Cover_141.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 142, "title": "The idiot", "author": "Fyodor Dostoevsky", "condition": "Good", "cover": "covers/Cover_142.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 143, "title": "The great alone", "author": "Kristin Hannah", "condition": "Good", "cover": "covers/Cover_143.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 144, "title": "The authenticity project", "author": "Clare Pooley", "condition": "Good", "cover": "covers/Cover_144.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 145, "title": "Theo of Golden", "author": "Allen Levi", "condition": "Good", "cover": "covers/Cover_145.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 146, "title": "Giovanni's Room", "author": "James Baldwin", "condition": "Good", "cover": "covers/Cover_146.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 147, "title": "The book of tomorrow", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_147.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 148, "title": "Perfect", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_148.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 149, "title": "The marble collector", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_149.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 150, "title": "Lyrebird", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_150.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 151, "title": "Roar", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_151.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 152, "title": "In a thousand different ways", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_152.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 153, "title": "Freckles", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_153.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 154, "title": "Thanks for the memories", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_154.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 155, "title": "If you could see me now", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_155.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 156, "title": "The time of my life", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_156.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 157, "title": "PS I Love you", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_157.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 158, "title": "Into the storm", "author": "Cecelia Ahern", "condition": "Good", "cover": "covers/Cover_158.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 159, "title": "With love from the Morisaki Bookshop", "author": "Satoshi Yagisawa", "condition": "Good", "cover": "covers/Cover_159.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 160, "title": "The art of being alone", "author": "Renuka Gavrani", "condition": "Good", "cover": "covers/Cover_160.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 161, "title": "The nightingale", "author": "Kristin Hannah", "condition": "Good", "cover": "covers/Cover_161.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 162, "title": "Saving Grace", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_162.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 163, "title": "Life Swap", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_163.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 164, "title": "The love verb", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_164.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 165, "title": "Babyville", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_165.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 166, "title": "The wish", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_166.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 167, "title": "Dreamland", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_167.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 168, "title": "Every breath", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_168.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 169, "title": "The return", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_169.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 170, "title": "The longest ride", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_170.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 171, "title": "At first sight", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_171.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 172, "title": "The choice", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_172.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 173, "title": "The last song", "author": "Nicholas Sparks", "condition": "Good", "cover": "covers/Cover_173.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 174, "title": "Falling", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_174.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 175, "title": "The patchwork marriage", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_175.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 176, "title": "Bookends", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_176.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 177, "title": "The sunshine sisters", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_177.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 178, "title": "Jemima J", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_178.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 179, "title": "Postcards from the heart", "author": "Ella Griffin", "condition": "Good", "cover": "covers/Cover_179.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 180, "title": "The little coffee shop of Kabul", "author": "Deborah", "condition": "Good", "cover": "covers/Cover_180.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 181, "title": "The snow child", "author": "Eowin Ivey", "condition": "Good", "cover": "covers/Cover_181.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 182, "title": "As long as the lemon trees grow", "author": "Zoulfa Katouh", "condition": "Good", "cover": "covers/Cover_182.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 183, "title": "Wedding Night", "author": "Sophie Kinsella", "condition": "Good", "cover": "covers/Cover_183.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 184, "title": "Girl Friday", "author": "Jane Green", "condition": "Good", "cover": "covers/Cover_184.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 185, "title": "The knot", "author": "Mark Watson", "condition": "Good", "cover": "covers/Cover_185.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 186, "title": "The reappearance of Rachel Price", "author": "Holly Jackson", "condition": "Good", "cover": "covers/Cover_186.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 187, "title": "The silent patient", "author": "Alex Mic", "condition": "Good", "cover": "covers/Cover_187.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 188, "title": "Alone in Berlin", "author": "Hans Fallada", "condition": "Good", "cover": "covers/Cover_188.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 189, "title": "Love unwritten", "author": "Lauren", "condition": "Good", "cover": "covers/Cover_189.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 190, "title": "Circe", "author": "Madelline Miller", "condition": "Good", "cover": "covers/Cover_190.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 191, "title": "The wishing game", "author": "Meg Shaffer", "condition": "Good", "cover": "covers/Cover_191.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 192, "title": "Martin Horbottle's Appreciation of time", "author": "Dominic Hutton", "condition": "Good", "cover": "covers/Cover_192.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 193, "title": "Never, never", "author": "Colleen Hoover", "condition": "Good", "cover": "covers/Cover_193.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 194, "title": "It ends with us", "author": "Colleen Hoover", "condition": "Good", "cover": "covers/Cover_194.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 195, "title": "It starts with us", "author": "Colleen Hoover", "condition": "Good", "cover": "covers/Cover_195.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 196, "title": "Shopaholic to the rescue", "author": "Sophie Kinsella", "condition": "Good", "cover": "covers/Cover_196.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 197, "title": "Surprise Me", "author": "Sophie Kinsella", "condition": "Good", "cover": "covers/Cover_197.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 198, "title": "Shopaholic and baby", "author": "Sophie Kinsella", "condition": "Good", "cover": "covers/Cover_198.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 199, "title": "Mini Shophalic", "author": "Sophie Kinsella", "condition": "Good", "cover": "covers/Cover_199.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 200, "title": "Shopaholic and sister", "author": "Sophie Kinsella", "condition": "Good", "cover": "covers/Cover_200.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 201, "title": "I've got your number", "author": "Sophie Kinsella", "condition": "Good", "cover": "covers/Cover_201.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 202, "title": "I owe you one", "author": "Sophie Kinsella", "condition": "Good", "cover": "covers/Cover_202.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 203, "title": "Don't want to miss a thing", "author": "Jill Mansell", "condition": "Good", "cover": "covers/Cover_203.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 204, "title": "Sheer Mischeif", "author": "Jill Mansell", "condition": "Good", "cover": "covers/Cover_204.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 205, "title": "An offer you can't refuse", "author": "Jill Mansell", "condition": "Good", "cover": "covers/Cover_205.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 206, "title": "Take a chance on me", "author": "Jill Mansell", "condition": "Good", "cover": "covers/Cover_206.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 207, "title": "You and me always", "author": "Jill Mansell", "condition": "Good", "cover": "covers/Cover_207.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 208, "title": "Rebecca", "author": "Daphne De Maurier", "condition": "Good", "cover": "covers/Cover_208.jpg", "status": "Available", "mrp": 599, "rental": 60}, {"id": 209, "title": "The Family experiment", "author": "John Marrs", "condition": "Good", "cover": "covers/Cover_209.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 210, "title": "Easter Egg Hunt - A guess who book", "author": "", "condition": "Good", "cover": "covers/Cover_210.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 211, "title": "Disney Tangled", "author": "", "condition": "Good", "cover": "covers/Cover_211.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 212, "title": "Mission:Bravery", "author": "", "condition": "Good", "cover": "covers/Cover_212.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 213, "title": "Disney - Snow White", "author": "", "condition": "Good", "cover": "covers/Cover_213.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 214, "title": "The rise & fall of Claude the Magnificient", "author": "Chris Capstick", "condition": "Good", "cover": "covers/Cover_214.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 215, "title": "Here comes Santa", "author": "", "condition": "Good", "cover": "covers/Cover_215.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 216, "title": "Princess Fairy Tales - Set of 10", "author": "", "condition": "Good", "cover": "covers/Cover_216.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 217, "title": "Felicity Wishes - Friendship & Fairyschool", "author": "Emma Thomson", "condition": "Good", "cover": "covers/Cover_217.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 218, "title": "Disney - The Jungle Book", "author": "", "condition": "Good", "cover": "covers/Cover_218.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 219, "title": "Early Reader - Storey Collection 3 stories", "author": "", "condition": "Good", "cover": "covers/Cover_219.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 220, "title": "Disney - Cinderalla", "author": "", "condition": "Good", "cover": "covers/Cover_220.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 221, "title": "Stories for 3 year olds", "author": "", "condition": "Good", "cover": "covers/Cover_221.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 222, "title": "Welcome to the world", "author": "Lucy Tapper & Steve Wilson", "condition": "Good", "cover": "covers/Cover_222.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 223, "title": "Noah & the animals", "author": "", "condition": "Good", "cover": "covers/Cover_223.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 224, "title": "Gilbert the great", "author": "Jane Clarke & Charles Fuge", "condition": "Good", "cover": "covers/Cover_224.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 225, "title": "My first complete book of games", "author": "", "condition": "Good", "cover": "covers/Cover_225.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 226, "title": "Bible Mini Pops The christmas story", "author": "", "condition": "Good", "cover": "covers/Cover_226.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 227, "title": "Make way for Noddy", "author": "", "condition": "Good", "cover": "covers/Cover_227.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 228, "title": "When I'm feeling Happy", "author": "Trace Moroney", "condition": "Good", "cover": "covers/Cover_228.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 229, "title": "Disney Princess - Dreams do come true", "author": "", "condition": "Good", "cover": "covers/Cover_229.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 230, "title": "Jolly Santa's Big delivery", "author": "", "condition": "Good", "cover": "covers/Cover_230.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 231, "title": "The dinosaur who lost his roar", "author": "Russell Punter", "condition": "Good", "cover": "covers/Cover_231.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 232, "title": "Santa's squeaky boots", "author": "", "condition": "Good", "cover": "covers/Cover_232.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 233, "title": "Disney - Cars 2", "author": "", "condition": "Good", "cover": "covers/Cover_233.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 234, "title": "The wizard of Oz", "author": "", "condition": "Good", "cover": "covers/Cover_234.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 235, "title": "Disney - Rescuers down under", "author": "", "condition": "Good", "cover": "covers/Cover_235.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 236, "title": "Disney - Winnie the Pooh", "author": "", "condition": "Good", "cover": "covers/Cover_236.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 237, "title": "Candle Prayers for Toddlers", "author": "", "condition": "Good", "cover": "covers/Cover_237.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 238, "title": "Ramona thr brave", "author": "Beverly Cleary", "condition": "Good", "cover": "covers/Cover_238.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 239, "title": "The Beginner's Bible - Timeless Children Stories", "author": "", "condition": "Good", "cover": "covers/Cover_239.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 240, "title": "Sing Along Disney Book", "author": "", "condition": "Good", "cover": "covers/Cover_240.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 241, "title": "Sleeping Beauty", "author": "", "condition": "Good", "cover": "covers/Cover_241.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 242, "title": "Disney - The good dinosaur", "author": "", "condition": "Good", "cover": "covers/Cover_242.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 243, "title": "Stories for 2 year olds", "author": "", "condition": "Good", "cover": "covers/Cover_243.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 244, "title": "My first complete book of Origami", "author": "", "condition": "Good", "cover": "covers/Cover_244.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 245, "title": "Disney - 101 dalmations", "author": "", "condition": "Good", "cover": "covers/Cover_245.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 246, "title": "Felicity Wishes - Secrets & Surprise", "author": "Emma Thomson", "condition": "Good", "cover": "covers/Cover_246.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 247, "title": "Opposites - Lift the flap", "author": "", "condition": "Good", "cover": "covers/Cover_247.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 248, "title": "The Jesus storybook bible", "author": "", "condition": "Good", "cover": "covers/Cover_248.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 249, "title": "Say & Pray Bible", "author": "", "condition": "Good", "cover": "covers/Cover_249.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 250, "title": "Eyes, Nose, Ears, Toes - Peekaboo playbook", "author": "", "condition": "Good", "cover": "covers/Cover_250.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 251, "title": "My first bible stories", "author": "", "condition": "Good", "cover": "covers/Cover_251.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 252, "title": "Disney Christmas Storybook collection", "author": "", "condition": "Good", "cover": "covers/Cover_252.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 253, "title": "Bible Stories - Well known stories to read and share", "author": "", "condition": "Good", "cover": "covers/Cover_253.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 254, "title": "My first christmas", "author": "", "condition": "Good", "cover": "covers/Cover_254.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 255, "title": "Big picture - Thesaurus", "author": "", "condition": "Good", "cover": "covers/Cover_255.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 256, "title": "Curious George Storybook collection", "author": "", "condition": "Good", "cover": "covers/Cover_256.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 257, "title": "Hoot - A holesome book of counting", "author": "", "condition": "Good", "cover": "covers/Cover_257.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 258, "title": "Disney - The little mermaid", "author": "", "condition": "Good", "cover": "covers/Cover_258.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 259, "title": "The Seven continents of the world - A lift the flap book", "author": "", "condition": "Good", "cover": "covers/Cover_259.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 260, "title": "Jack and the Beanstalk", "author": "", "condition": "Good", "cover": "covers/Cover_260.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 261, "title": "Fairy Tales", "author": "", "condition": "Good", "cover": "covers/Cover_261.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 262, "title": "A sister more like me - Frozen", "author": "", "condition": "Good", "cover": "covers/Cover_262.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 263, "title": "I love you daddy", "author": "Melanie Joyce & Polona Lovsin", "condition": "Good", "cover": "covers/Cover_263.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 264, "title": "Disney Story Collection", "author": "", "condition": "Good", "cover": "covers/Cover_264.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 265, "title": "Upside Down friday", "author": "Lana Spasevski & Nicky Johnston", "condition": "Good", "cover": "covers/Cover_265.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 266, "title": "Disney - 101 dalmations", "author": "", "condition": "Good", "cover": "covers/Cover_266.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 267, "title": "I love you grandma", "author": "Jillian Harker & Kristina Stephenson", "condition": "Good", "cover": "covers/Cover_267.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 268, "title": "Dino Stories", "author": "", "condition": "Good", "cover": "covers/Cover_268.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 269, "title": "I can tell the time", "author": "", "condition": "Good", "cover": "covers/Cover_269.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 270, "title": "Sleeping Beauty - A secret princess", "author": "", "condition": "Good", "cover": "covers/Cover_270.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 271, "title": "Disney Fairies - Storybook collection", "author": "", "condition": "Good", "cover": "covers/Cover_271.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 272, "title": "Jungle Explorers", "author": "", "condition": "Good", "cover": "covers/Cover_272.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 273, "title": "Secrets of Winter - A shine - a - light book", "author": "", "condition": "Good", "cover": "covers/Cover_273.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 274, "title": "Fairy tales for little children", "author": "", "condition": "Good", "cover": "covers/Cover_274.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 275, "title": "Bible Stories - With CD", "author": "", "condition": "Good", "cover": "covers/Cover_275.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 276, "title": "Disney - Cinderella", "author": "", "condition": "Good", "cover": "covers/Cover_276.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 277, "title": "The little mermaid", "author": "", "condition": "Good", "cover": "covers/Cover_277.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 278, "title": "Disney - Ratatouille", "author": "", "condition": "Good", "cover": "covers/Cover_278.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 279, "title": "Disney - Finding Nemo", "author": "", "condition": "Good", "cover": "covers/Cover_279.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 280, "title": "Pinocchio", "author": "", "condition": "Good", "cover": "covers/Cover_280.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 281, "title": "Over 150 Stories & Rhymes for little one", "author": "", "condition": "Good", "cover": "covers/Cover_281.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 282, "title": "The owl goes on holiday", "author": "", "condition": "Good", "cover": "covers/Cover_282.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 283, "title": "Disney - Moana", "author": "", "condition": "Good", "cover": "covers/Cover_283.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 284, "title": "Disney - Ralph breaks the internet", "author": "", "condition": "Good", "cover": "covers/Cover_284.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 285, "title": "Disney - The Aristocrats", "author": "", "condition": "Good", "cover": "covers/Cover_285.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 286, "title": "Disney - Toy story", "author": "", "condition": "Good", "cover": "covers/Cover_286.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 287, "title": "Disney - Beauty & the beast", "author": "", "condition": "Good", "cover": "covers/Cover_287.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 288, "title": "The big book of bible questions", "author": "", "condition": "Good", "cover": "covers/Cover_288.jpg", "status": "Available", "mrp": 399, "rental": 40}, {"id": 289, "title": "Disney - Sofia the first - The fancy dress ball", "author": "", "condition": "Good", "cover": "covers/Cover_289.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 290, "title": "Disney - Aladdin", "author": "", "condition": "Good", "cover": "covers/Cover_290.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 291, "title": "Animals of the world", "author": "", "condition": "Good", "cover": "covers/Cover_291.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 292, "title": "Disney - frozen", "author": "", "condition": "Good", "cover": "covers/Cover_292.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 293, "title": "My big readalong fairytale book", "author": "", "condition": "Good", "cover": "covers/Cover_293.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 294, "title": "Snow white and the seven dwarfs", "author": "", "condition": "Good", "cover": "covers/Cover_294.jpg", "status": "Available", "mrp": 299, "rental": 30}, {"id": 295, "title": "That certain age", "author": "", "condition": "Good", "cover": "covers/Cover_295.jpg", "status": "Available", "mrp": 499, "rental": 50}, {"id": 296, "title": "The tattoist of Auschwitz", "author": "Heather Morris", "condition": "Good", "cover": "covers/Cover_296.jpg", "status": "Available", "mrp": 599, "rental": 60}];
-const WHATSAPP_NUMBER = "919840888568";
+const WHATSAPP_NUMBER = "919003272817";
 
 function esc(s) {
   return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
@@ -126,13 +223,30 @@ function esc(s) {
 const state = JSON.parse(localStorage.getItem("readingNestStatus") || "{}");
 
 function currentStatus(book) {
-  return state[book.id] || book.status;
+  const saved = state[book.id];
+  if (saved && typeof saved === "object") return saved.status || book.status;
+  return saved || book.status;
+}
+
+function currentReturnDate(book) {
+  const saved = state[book.id];
+  return (saved && typeof saved === "object" && saved.returnDate) || book.returnDate || "";
+}
+
+function formatReturnDate(value) {
+  if (!value) return "";
+  const parts = String(value).split("-");
+  return parts.length === 3 ? `${parts[2]}/${parts[1]}/${parts[0]}` : String(value);
 }
 
 function requestBook(id) {
   const book = BOOKS.find(b => b.id === id);
   if (!book) return;
-  const message = `Hi, I would like to request the book '${book.title}'. The lending fee shown is ₹${book.rental} for 14 days.`;
+  const status = currentStatus(book);
+  const returnDate = currentReturnDate(book);
+  const message = status === "Rented out"
+    ? `Hi, I am interested in '${book.title}'. I see it is currently rented out${returnDate ? ` and expected back on ${formatReturnDate(returnDate)}` : ""}. Please let me know when it becomes available.`
+    : `Hi, I would like to request the book '${book.title}'. The lending fee shown is ₹${book.rental} for 14 days.`;
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
 }
 
@@ -156,6 +270,364 @@ function populateFilters() {
   authors.forEach(a => authorSelect.add(new Option(a,a)));
 }
 
+function setQuickFilter(filter) {
+  const search = document.getElementById("search");
+  const genre = document.getElementById("genre");
+  const author = document.getElementById("author");
+  const availability = document.getElementById("availability");
+  if (filter === "reset" || filter === "all") {
+    search.value = ""; genre.value = "all"; author.value = "all"; availability.value = "all";
+  } else if (filter === "available") {
+    search.value = ""; genre.value = "all"; author.value = "all"; availability.value = "available";
+  } else {
+    search.value = ""; author.value = "all"; availability.value = "all";
+    const target = filter === "children" ? "Children's books" : filter === "nonfiction" ? "Non-fiction" : "Fiction";
+    genre.value = [...genre.options].some(o => o.value === target) ? target : "all";
+  }
+  document.querySelectorAll(".quick-filter").forEach(btn => btn.classList.toggle("active", btn.dataset.quick === filter));
+  render();
+  document.getElementById("browse").scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+// Curated shelves use explicit book IDs, not title-keyword guesses.
+// Short editorial notes help visitors choose a book; these are Reading Nest suggestions,
+// not claims that the owner has personally read each title.
+const BOOK_RECOMMENDATION_NOTES = {
+  1: "A witty, character-led story for readers who enjoy sharp observations, family dynamics and a little social mischief.",
+  2: "In the mood for romance, banter and fake-dating complications? This is a playful escape for fans of slow-burn love stories.",
+  3: "A quirky comic adventure for readers who like absurd situations, unlikely journeys and history with a mischievous twist.",
+  4: "Enjoy a classic of manners, matchmaking and misunderstandings, with a clever heroine whose confidence sometimes outruns her judgement.",
+  5: "A family drama about a life-changing secret and the long shadow it casts across relationships, memory and belonging.",
+  6: "A challenging, intense literary novel set around a comedian’s performance, exploring memory, pain and the stories people tell.",
+  7: "A festive, cosy choice for readers who enjoy romance, seasonal chaos and a warm-hearted holiday atmosphere.",
+  8: "For readers who enjoy dreamlike, mysterious fiction where music, memory, fate and reality seem to blur together.",
+  9: "A popular relationship guide about communication styles and misunderstandings between partners; best read as one perspective, not a universal rulebook.",
+  10: "Gandhi’s autobiography traces the experiences and principles that shaped his life, including truth, nonviolence and public service.",
+  11: "A candid memoir about royal life, family, grief and the pressure of growing up in public.",
+  12: "An encouraging personal-growth read for people looking for motivation to challenge self-doubt and rethink what is possible.",
+  13: "Matthew Perry reflects on fame, friendship, addiction and recovery in a candid memoir; it discusses difficult personal experiences.",
+  14: "A historical primary source for readers studying the rise of Nazism and extremist ideology. Its racist and antisemitic propaganda should be read critically in historical context.",
+  15: "A biographical look at M. G. Ramachandran, exploring the public life and legacy of a major figure in Tamil cinema and politics.",
+  16: "A big-picture tour through human history, ideal for curious readers who enjoy questions about how societies and shared beliefs developed.",
+  17: "Historical fiction set amid the politics and upheaval of medieval England, for readers who enjoy court intrigue and richly researched settings.",
+  18: "A classic comic boating trip full of mishaps, dry humour and observations about friendship and everyday life.",
+  19: "A memoir of childhood abuse and survival; a difficult but important read for those prepared for distressing subject matter.",
+  20: "A landmark epic poem retelling the biblical Fall, exploring temptation, freedom, pride and the struggle between good and evil.",
+  21: "A memoir about childhood abuse, resilience and the search for dignity; it contains upsetting material.",
+  22: "A fast-moving espionage thriller built around an undercover mission and international security tensions.",
+  23: "A short, shimmering classic about wealth, longing and the gap between the American Dream and reality.",
+  24: "A contemporary romantic comedy for readers who enjoy relationship complications, secrets and second chances.",
+  25: "A practical communication guide filled with techniques for making conversation and navigating social situations with more confidence.",
+  26: "A short workplace leadership fable about motivation, shared purpose and helping teams work well together.",
+  27: "A moving, supernatural prison drama about compassion, injustice and the humanity found in an unlikely place; includes disturbing themes.",
+  28: "An intimate, emotionally observant novel about two young people whose connection changes as they grow, separate and reconnect.",
+  29: "A richly detailed historical novel about a count confined to a Moscow hotel, finding purpose and connection within a limited world.",
+  30: "A bittersweet relationship novel about marriage, family and a European trip that forces a couple to face what has changed.",
+  31: "A children’s historical adventure about siblings travelling through hardship in search of family and safety.",
+  32: "A reflective account connected to midwifery and care, offering a glimpse into lives, work and community across generations.",
+  33: "A light, fashion-world story for readers who enjoy glamour, ambition and the complications behind a polished image.",
+  34: "A glamorous, high-stakes thriller for readers who enjoy secrets, rivalry and dangerous twists.",
+  35: "A military-tech thriller involving a specialist investigator, a violent crime and a threat that reaches beyond one case.",
+  36: "A fast-paced crime thriller featuring a private-investigation agency drawn into a dangerous case.",
+  37: "A contemporary relationship story for readers who enjoy family complications, romance and everyday life turning unexpectedly.",
+  38: "A witty relationship comedy about romantic history catching up with the present.",
+  39: "A middle-grade fantasy adventure in a strange town where appearances hide secrets; good for young readers who enjoy mystery and magic.",
+  40: "A contemporary romance about unexpected connection, vulnerability and building a relationship outside the usual plan.",
+  41: "A lively young-adult story about growing up, changing relationships and navigating an unexpected new stage of life.",
+  42: "David Goggins shares his story and mental-training philosophy, focused on endurance, discipline and pushing beyond perceived limits.",
+  43: "A reflective self-development book about habits, purpose and practices intended to bring more calm and intention to everyday life.",
+  44: "A wartime thriller about women recruited for a dangerous mission behind enemy lines in occupied France.",
+  45: "A sweeping historical novel of love, power and religious conflict in sixteenth-century Europe.",
+  46: "A medieval historical saga about ambition, loyalty, love and survival in a changing English town.",
+  47: "A thriller about a radical group using a devastating threat to pursue its goals, and the people trying to stop them.",
+  48: "An expansive historical saga following families whose lives are shaped by the First World War and political upheaval.",
+  49: "A tense thriller set during a snowbound crisis, where a dangerous secret threatens to spiral out of control.",
+  50: "Nigel Slater’s memoir of childhood and food, told through vivid memories of meals, family and growing up.",
+  51: "A book to explore if its subject, setting or title catches your curiosity; a chance to discover a new author or reading interest.",
+  52: "A personal account of living with dementia and the changing nature of memory, identity and relationships.",
+  53: "A young-adult mystery about a teenager’s recorded explanations for her death and the impact on classmates; includes suicide-related themes.",
+  54: "A literary novel about friendship, ambition, race and the complicated ways two girls’ lives diverge over time.",
+  55: "A atmospheric mystery and coming-of-age story set in the marshes of North Carolina, blending isolation, nature and a murder investigation.",
+  56: "A romantic historical story with a wintry atmosphere, for readers drawn to secrets, longing and the past.",
+  57: "A gentle, bittersweet instalment in the Before the Coffee Gets Cold series, where a café offers a chance to revisit moments and relationships.",
+  58: "A tense domestic thriller for readers who like family secrets, shifting loyalties and uncertainty about whom to trust.",
+  59: "A dark, suspenseful story for readers who enjoy unsettling family dynamics and psychological tension.",
+  60: "A historical thriller set in post-war Spain, where espionage, political danger and personal loyalties intersect.",
+  61: "A contemporary story about fatherhood, responsibility and the complicated bonds between adults and children.",
+  62: "An epic fantasy of rival houses, political manoeuvring and a dangerous struggle for power; includes violence and mature themes.",
+  63: "A warm, book-loving story about an elderly woman’s hidden past and the power of listening to people’s lives.",
+  64: "A historical novel about an unlikely friendship during the Holocaust; it deals with genocide and should be approached as a serious, distressing story.",
+  65: "A collection of small, practical ideas for building healthier routines and making gradual changes in everyday life.",
+  66: "A moving family story about memory, identity and the relationships that hold people together through change.",
+  67: "A romantic, humorous fantasy about love, second chances and the possibility of finding connection in unexpected circumstances.",
+  68: "A collection of real-life relationship stories exploring the many forms love and partnership can take.",
+  69: "A moving World War II story narrated by Death, centred on a young girl, stolen books and the power of words amid brutality.",
+  70: "A musical, imaginative novel about talent, love and the unseen connections that shape a life.",
+  71: "A thoughtful, uplifting story about generosity, kindness and the quiet ways people can make a difference.",
+  72: "A light contemporary romance about fresh starts and the possibility of getting love right the next time.",
+  73: "Mitch Albom’s memoir of love and loss, telling the story of a young Haitian girl and the family who cared for her.",
+  74: "A tender, darkly funny novel about loneliness, trauma and the slow, imperfect process of letting other people in.",
+  75: "A classic children’s story about Sara Crewe, whose imagination and kindness endure through a sudden change in fortune.",
+  76: "A funny, heartfelt collection of reflections on parenting, family life and the lessons a father hopes to pass on.",
+  77: "A high-stakes thriller featuring a man with a hidden past and a dangerous mission to protect others.",
+  78: "A heartfelt story about a father and son finding ways to connect, with gaming offering an unexpected bridge.",
+  79: "A literary mystery exploring memory, family history and secrets that refuse to stay buried.",
+  80: "A dystopian young-adult adventure where a boy discovers that the world around him is more dangerous and complicated than he was told.",
+  81: "A short, personal novel about a life-changing experience, written with the author’s characteristic warmth and humour.",
+  82: "An emotional romance about grief, sacrifice and the powerful connection between people facing painful circumstances.",
+  83: "A political satire that uses a near-future setting to examine identity, language, migration and public debate in India.",
+  84: "A historical account of Nazi persecution and its human consequences; best suited to readers prepared for difficult wartime subject matter.",
+  85: "An investigative account of the origins of COVID-19 and the controversies surrounding the early outbreak; read alongside multiple credible sources.",
+  86: "A researched account of a father and son’s survival through Nazi concentration camps, based on diaries and historical records.",
+  87: "A character-driven story about friendship, belonging and the lasting influence people have on one another.",
+  88: "A funny, compassionate ensemble story about strangers brought together by a failed bank robbery and a hostage situation.",
+  89: "A romantic, emotionally driven story about family, faith and unexpected turns of fate.",
+  90: "A collection of short stories featuring ordinary people at turning points, written with warmth, humour and curiosity.",
+  91: "A reflective, letter-shaped story about a woman looking back on relationships, regret and the possibility of connection.",
+  92: "An illustrated lifestyle book about creating a comfortable, welcoming home and finding pleasure in everyday rituals.",
+  93: "A distinctive mystery narrated by a mathematically minded teenager investigating a neighbour’s dog; offers an unusual perspective on family and trust.",
+  94: "A psychological mystery about a family living with loss and uncertainty, where questions about identity and truth keep resurfacing.",
+  95: "A warm romantic comedy with wedding-day chaos, friendship and plenty of chocolate at its heart.",
+  96: "A feel-good contemporary story about blended families, belonging and making a new life from unexpected pieces.",
+  97: "A lively story of female friendship, fresh starts and the ups and downs of everyday life.",
+  98: "A sweeping First World War novel about love, memory and the devastating experience of life in the trenches.",
+  99: "A popular introduction to ideas about purpose, everyday meaning and habits associated with a fulfilling life.",
+  100: "A contemporary story for readers drawn to relationships, self-discovery and the moments that change how we see ourselves.",
+  101: "A wartime story focused on women’s experiences, courage and the personal costs of conflict.",
+  102: "A contemporary ensemble story about women, friendship and finding strength through unexpected solidarity.",
+  103: "A lyrical, atmospheric novel about a young girl, family secrets and the fragile boundary between imagination and reality.",
+  104: "A contemporary Indian romance about heartbreak, new beginnings and whether love can return after loss.",
+  105: "A relationship-centred story about connection, change and the complicated moments that shape everyday life.",
+  106: "A reflective love story about soulmates, commitment and the search for a lasting connection.",
+  107: "A light romantic comedy for readers who enjoy awkward dates, misunderstandings and the messy search for love.",
+  108: "A suspenseful, plot-driven read for people who enjoy mysteries, secrets, high stakes and the urge to keep turning pages.",
+  109: "A cosy, bookish story about community, new beginnings and the people brought together by a local bookshop.",
+  110: "A gripping, emotionally intense novel told through a young child’s perspective, exploring captivity, resilience and the world beyond a confined space.",
+  111: "A relationship comedy about marriage, family life and the chaos that comes when private space becomes hard to find.",
+  112: "A true-crime or investigative account of a child’s disappearance and the long search for answers; check the edition details before borrowing.",
+  113: "A small-town courtroom drama about accusation, reputation and the consequences of a case involving a teacher and a teenager.",
+  114: "A breezy romantic comedy about travel, unexpected encounters and finding love away from home.",
+  115: "A warm, community-minded story about music, friendship and people finding common ground.",
+  116: "A darkly comic crime story with sharp satire and unexpected turns.",
+  117: "A historical mystery connecting medieval secrets, religious history and a modern-day search for answers.",
+  118: "A classic Gothic novel about an independent young woman seeking love, dignity and belonging while confronting dark secrets.",
+  119: "Matt Haig’s candid reflection on depression, anxiety and recovery, offering hope while acknowledging mental-health struggles.",
+  120: "A tender young-adult romance about two outsiders finding connection through music, comics and shared vulnerability.",
+  121: "A gentle Korean novel about a woman who opens a bookshop and discovers how books and community can help people begin again.",
+  122: "A breakneck conspiracy thriller following clues through art, history and secret societies; best for readers who enjoy puzzles and twists.",
+  123: "A classic crime saga about family loyalty, power and the hidden costs of a criminal empire.",
+  124: "A disturbing, thought-provoking novel about motherhood, responsibility and a family confronting a terrible act.",
+  125: "A young-adult story about grief, mental health and an intense connection between two teenagers; includes suicide-related themes.",
+  126: "A light romantic comedy set in Paris, full of travel, friendship and romantic complications.",
+  127: "A tense, emotional continuation of the Beartown story, exploring a small community divided by loyalty, sport and conflict.",
+  128: "The concluding Beartown novel, following a community shaped by hockey, grief, loyalty and the consequences of past choices.",
+  129: "A coming-of-age novel about friendship, first love, grief and the search for meaning.",
+  130: "A young-adult story of two boys with the same name whose lives intersect, exploring friendship, identity and growing up.",
+  131: "Sometimes the people who seem hardest to know have the most to teach us about kindness, belonging and human connection.",
+  132: "A romantic comedy about friendship, wedding preparations and the unexpected complications of love.",
+  133: "A young-adult romance about grief, recovery and the uncertain path forward after a life-changing accident.",
+  134: "A contemporary relationship story about love, family and making choices that reshape a life.",
+  135: "A summery mystery about hidden truths, relationships and the past catching up with the present.",
+  136: "A cosy romantic comedy about relationships, expectations and the question of what makes a good partner.",
+  137: "A nature-infused mystery for readers who enjoy observation, wildlife and a puzzle to unravel.",
+  138: "A light, fun young-adult story about a girl learning to navigate an unexpected royal or social role.",
+  139: "A moving novel about grief, step-parenthood and the difficult, imperfect work of making a family.",
+  140: "An intense contemporary romance about attraction, emotional baggage and the difficulty of separating past pain from present love.",
+  141: "A contemporary Indian romance about friendship, attraction and the awkward uncertainties of young love.",
+  142: "A classic Russian novel exploring innocence, compassion and society’s moral contradictions through a strikingly unconventional hero.",
+  143: "A powerful family drama set in the wilds of Alaska, where isolation, danger and resilience shape a mother and daughter’s lives.",
+  144: "A thoughtful, character-led read about the stories people carry, the connections they make and the possibility of starting again.",
+  145: "A reflective, uplifting novel about generosity, art and the quiet impact of small acts of kindness.",
+  146: "A classic literary novel about desire, identity and the pain of living against one’s own truth.",
+  147: "A whimsical novel involving a mysterious book that offers glimpses of the future and a chance to rethink the present.",
+  148: "A thought-provoking contemporary novel about appearance, identity and the pressure to meet other people’s expectations.",
+  149: "A family mystery about memory, identity and the unexpected truths that surface from the past.",
+  150: "A lyrical story about a mysterious young woman and the way music and human connection can transform a life.",
+  151: "A collection of short stories with imaginative, often surprising takes on women’s lives and modern anxieties.",
+  152: "A character-led novel about seeing the world differently, belonging and the complicated beauty of human experience.",
+  153: "A warm contemporary novel about belonging, self-worth and the people who shape who we become.",
+  154: "A moving, gently magical story about grief, family and the unexpected ways lives can intersect.",
+  155: "A whimsical story about loneliness, imagination and discovering that connection can arrive in unexpected forms.",
+  156: "A playful, magical-realist story about a woman forced to reconsider the life she is living.",
+  157: "A heartfelt story about grief and healing, as a young widow receives letters that help her slowly re-enter life.",
+  158: "A warm, imaginative contemporary story that blends relationships and personal change with a touch of the unexpected.",
+  159: "A relationship-centred story about connection, change and the complicated moments that shape everyday life.",
+  160: "A reflective self-help read about becoming comfortable with solitude and building a kinder relationship with yourself.",
+  161: "A moving World War II novel following two sisters in occupied France and the different forms their courage takes.",
+  162: "A domestic suspense story about marriage, identity and the secrets that can hide behind an apparently perfect life.",
+  163: "A contemporary novel about two women switching circumstances and gaining a new perspective on their lives.",
+  164: "A relationship-focused novel about love, commitment and the choices that make a partnership work.",
+  165: "A contemporary story about friendship, relationships and the different paths women take toward family and fulfilment.",
+  166: "A moving romance about first love, memory and the choices that shape a lifetime.",
+  167: "A heartfelt romantic drama about love, memory and life-changing choices, for readers who enjoy emotional stories and relationships tested by time.",
+  168: "A heartfelt romantic drama about love, memory and life-changing choices, for readers who enjoy emotional stories and relationships tested by time.",
+  169: "A romantic drama about coming home, old connections and the truths that emerge when the past returns.",
+  170: "A romance linking two love stories across generations, exploring devotion, sacrifice and the choices that shape a life.",
+  171: "A romantic story about commitment, family and the surprises that can follow a seemingly perfect beginning.",
+  172: "A romance about a life-altering decision and the enduring consequences of love and commitment.",
+  173: "A family-centred coming-of-age romance about reconciliation, first love and the healing power of music.",
+  174: "A contemporary relationship story about unexpected change, family and learning to begin again.",
+  175: "A warm, realistic look at marriage, family and the work of fitting different lives together.",
+  176: "A story about friendship, love and the turning points that change a close-knit group over time.",
+  177: "A family drama about three sisters confronting old hurts and finding their way back to one another.",
+  178: "A sharp, funny novel about body image, self-esteem and the search for love on your own terms.",
+  179: "A warm contemporary story about friendship, love and the surprises that arrive when life refuses to follow a plan.",
+  180: "A story of friendship and resilience centred on women whose lives intersect in a Kabul café.",
+  181: "An atmospheric Alaskan tale blending frontier hardship, folklore and the mystery of a child who appears in the snow.",
+  182: "A moving young-adult novel set during the Syrian revolution, exploring survival, hope, love and the cost of conflict.",
+  183: "A comic romance full of mistaken assumptions, family complications and wedding-related chaos.",
+  184: "A contemporary romantic comedy about work, friendship and trying to keep life together when plans go awry.",
+  185: "A comic novel about relationships and the tangled complications of modern life.",
+  186: "A twisty young-adult mystery about a missing mother who returns after years away, bringing more questions than answers.",
+  187: "A psychological thriller about a painter who stops speaking after a shocking crime and the therapist determined to understand why.",
+  188: "A richly imagined or researched journey into another time, for readers who enjoy history, moral choices and the lives shaped by major events.",
+  189: "A contemporary romance about attraction, emotional walls and the courage to be honest about what you want.",
+  190: "A myth-inspired retelling that gives voice to the sorceress Circe, exploring power, exile, identity and transformation.",
+  191: "A whimsical, bookish novel about a woman, a child and a mysterious contest that offers a chance at a new future.",
+  192: "A reflective, offbeat story for readers drawn to time, memory and the small details that give life meaning.",
+  193: "A suspenseful romance about two people who lose their memories and must piece together the truth of their relationship.",
+  194: "An emotionally intense contemporary romance about love, difficult choices and breaking cycles of harm; includes domestic-abuse themes.",
+  195: "A continuation of Lily’s story, exploring co-parenting, new beginnings and the challenge of building a healthier future.",
+  196: "A comic Shopaholic adventure full of shopping mishaps, family chaos and a frantic attempt to put things right.",
+  197: "A relationship comedy about a couple trying to keep their marriage exciting, with unexpected consequences.",
+  198: "A humorous Shopaholic novel about pregnancy, spending and the chaos of preparing for a new arrival.",
+  199: "A light, character-led contemporary story for readers who enjoy romance, friendship, everyday mishaps and fresh starts.",
+  200: "A funny story about family reunion, unexpected differences and the trouble that follows when a long-lost sister appears.",
+  201: "A fast, funny romantic comedy sparked by a lost phone and a series of increasingly complicated messages.",
+  202: "A feel-good romantic comedy about a woman whose small act of help leads to a chain of unexpected changes.",
+  203: "A light, character-led contemporary story for readers who enjoy romance, friendship, everyday mishaps and fresh starts.",
+  204: "A light, character-led contemporary story for readers who enjoy romance, friendship, everyday mishaps and fresh starts.",
+  205: "A light, character-led contemporary story for readers who enjoy romance, friendship, everyday mishaps and fresh starts.",
+  206: "A light, character-led contemporary story for readers who enjoy romance, friendship, everyday mishaps and fresh starts.",
+  207: "A light, character-led contemporary story for readers who enjoy romance, friendship, everyday mishaps and fresh starts.",
+  208: "A classic Gothic suspense novel about a young bride living in the shadow of her husband’s first wife and a house full of secrets.",
+  209: "A speculative thriller that asks what happens when family life becomes a high-stakes social experiment.",
+  210: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  211: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  212: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  213: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  214: "A book to explore if its subject, setting or title catches your curiosity; a chance to discover a new author or reading interest.",
+  215: "A festive storytime choice for little readers, perfect for sharing seasonal stories and building a cosy read-aloud routine.",
+  216: "A collection of familiar tales to encourage imagination, listening and the pleasure of reading together.",
+  217: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  218: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  219: "A book to explore if its subject, setting or title catches your curiosity; a chance to discover a new author or reading interest.",
+  220: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  221: "A collection of age-friendly stories for growing attention spans, new vocabulary and shared storytime.",
+  222: "A tender read for sharing affection and making a little one feel loved, especially during quiet family storytime.",
+  223: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  224: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  225: "A hands-on learning pick for curious children, encouraging them to explore a new skill or discover more about the world.",
+  226: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  227: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  228: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  229: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  230: "A festive storytime choice for little readers, perfect for sharing seasonal stories and building a cosy read-aloud routine.",
+  231: "A playful choice for young adventurers who enjoy animals, imaginative discoveries and sharing a story together.",
+  232: "A festive storytime choice for little readers, perfect for sharing seasonal stories and building a cosy read-aloud routine.",
+  233: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  234: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  235: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  236: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  237: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  238: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  239: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  240: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  241: "A book to explore if its subject, setting or title catches your curiosity; a chance to discover a new author or reading interest.",
+  242: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  243: "A simple collection made for short, cosy read-aloud moments with toddlers who are just beginning to enjoy stories.",
+  244: "A hands-on learning pick for curious children, encouraging them to explore a new skill or discover more about the world.",
+  245: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  246: "A relationship-centred story about connection, change and the complicated moments that shape everyday life.",
+  247: "An interactive early-learning book for little hands, with simple concepts to explore together through looking, lifting and naming.",
+  248: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  249: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  250: "An interactive early-learning book for little hands, with simple concepts to explore together through looking, lifting and naming.",
+  251: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  252: "A festive storytime choice for little readers, perfect for sharing seasonal stories and building a cosy read-aloud routine.",
+  253: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  254: "A festive storytime choice for little readers, perfect for sharing seasonal stories and building a cosy read-aloud routine.",
+  255: "A hands-on learning pick for curious children, encouraging them to explore a new skill or discover more about the world.",
+  256: "A playful choice for young adventurers who enjoy animals, imaginative discoveries and sharing a story together.",
+  257: "A hands-on learning pick for curious children, encouraging them to explore a new skill or discover more about the world.",
+  258: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  259: "An interactive early-learning book for little hands, with simple concepts to explore together through looking, lifting and naming.",
+  260: "A book to explore if its subject, setting or title catches your curiosity; a chance to discover a new author or reading interest.",
+  261: "A collection of familiar tales to encourage imagination, listening and the pleasure of reading together.",
+  262: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  263: "A tender read for sharing affection and making a little one feel loved, especially during quiet family storytime.",
+  264: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  265: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  266: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  267: "A tender read for sharing affection and making a little one feel loved, especially during quiet family storytime.",
+  268: "A playful choice for young adventurers who enjoy animals, imaginative discoveries and sharing a story together.",
+  269: "A hands-on learning pick for curious children, encouraging them to explore a new skill or discover more about the world.",
+  270: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  271: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  272: "A playful choice for young adventurers who enjoy animals, imaginative discoveries and sharing a story together.",
+  273: "A child-friendly story or activity book for exploring new ideas and making reading a fun part of the day.",
+  274: "A collection of familiar tales to encourage imagination, listening and the pleasure of reading together.",
+  275: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  276: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  277: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  278: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  279: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  280: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  281: "A collection of familiar tales to encourage imagination, listening and the pleasure of reading together.",
+  282: "A playful choice for young adventurers who enjoy animals, imaginative discoveries and sharing a story together.",
+  283: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  284: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  285: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  286: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  287: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  288: "A gentle, child-friendly introduction to familiar Bible stories and faith themes, suited to shared reading with a grown-up.",
+  289: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  290: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  291: "A hands-on learning pick for curious children, encouraging them to explore a new skill or discover more about the world.",
+  292: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  293: "A collection of familiar tales to encourage imagination, listening and the pleasure of reading together.",
+  294: "A familiar, illustrated story for young fans of classic characters, best enjoyed together at storytime.",
+  295: "A book to explore if its subject, setting or title catches your curiosity; a chance to discover a new author or reading interest.",
+  296: "A harrowing historical novel based on survivor interviews, following love and survival in Auschwitz; includes Holocaust atrocities.",
+};
+
+// Update these lists when you want to change the handpicked recommendations.
+const READING_SHELVES = [
+  { key: "gentle", title: "A gentle place to begin", description: "Welcoming reads for easing into a reading habit.", ids: [144, 51, 159, 63] },
+  { key: "lasting", title: "Stories that stay with you", description: "Character-led stories with plenty to think about after the last page.", ids: [87, 131, 69, 161] },
+  { key: "mystery", title: "Mystery & suspense", description: "For readers who love questions, twists and page-turning tension.", ids: [187, 122, 108, 186] },
+  { key: "love", title: "Love, life & relationships", description: "Stories about connection, change, family and the complicated bits of life.", ids: [2, 28, 157, 166] },
+  { key: "children", title: "Little readers’ corner", description: "Picture books, familiar stories and read-aloud favourites for children.", ids: [243, 221, 256, 231, 293, 281] },
+  { key: "curious", title: "Curious minds", description: "Non-fiction and reflective reads for exploring ideas and everyday life.", ids: [16, 25, 43, 99, 92] }
+];
+
+function renderReadingShelves(selectedKey) {
+  const root = document.getElementById("shelves-container");
+  const message = document.getElementById("shelf-selection-message");
+  if (!root || !message) return;
+  const shelf = READING_SHELVES.find(item => item.key === selectedKey);
+  document.querySelectorAll(".discovery-option").forEach(button => {
+    const active = button.dataset.shelf === selectedKey;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+  if (!shelf) {
+    root.innerHTML = "";
+    root.hidden = true;
+    message.textContent = "Choose a category above to see your handpicked books.";
+    return;
+  }
+  const books = shelf.ids.map(id => BOOKS.find(book => book.id === id)).filter(Boolean);
+  root.innerHTML = `<section class="shelf"><div class="shelf-top"><div><h3>${esc(shelf.title)}</h3><p>${esc(shelf.description)}</p></div><span class="shelf-count">${books.length} handpicked books</span></div><div class="shelf-books">${books.map(book => {
+    const status = currentStatus(book);
+    const date = currentReturnDate(book);
+    const statusText = status === "Rented out" ? `Rented out${date ? ` · expected back ${formatReturnDate(date)}` : ""}` : status;
+    return `<article class="shelf-book"><div class="shelf-cover"><img loading="lazy" src="${esc(book.cover)}" alt="Cover of ${esc(book.title)}" onerror="this.style.display='none'"></div><div class="shelf-book-info"><strong>${esc(book.title)}</strong><span class="shelf-author">${esc(book.author || "Author not listed")}</span>${BOOK_RECOMMENDATION_NOTES[book.id] ? `<p class="shelf-recommendation">${esc(BOOK_RECOMMENDATION_NOTES[book.id])}</p>` : ""}<span class="shelf-fee">Lending fee: ₹${book.rental} · 14 days</span><span class="shelf-status">${esc(statusText)}</span><button type="button" onclick="requestBook(${book.id})">${status === "Rented out" ? "Enquire on WhatsApp" : "Ask about this book"}</button></div></article>`;
+  }).join("")}</div></section>`;
+  root.hidden = false;
+  message.textContent = `Here are our handpicked suggestions for “${shelf.title}”. Choose another category any time to explore a different shelf.`;
+}
+
 function render() {
   const q = document.getElementById("search").value.trim().toLowerCase();
   const filter = document.getElementById("availability").value;
@@ -164,7 +636,7 @@ function render() {
   const filtered = BOOKS.filter(b => {
     const matchesText = !q || b.title.toLowerCase().includes(q) || b.author.toLowerCase().includes(q);
     const st = currentStatus(b).toLowerCase();
-    const matchesFilter = filter === "all" || (filter === "available" && st === "available") || (filter === "requested" && st === "requested");
+    const matchesFilter = filter === "all" || (filter === "available" && st === "available") || (filter === "requested" && st === "requested") || (filter === "rented" && st === "rented out");
     const matchesGenre = genre === "all" || getGenre(b) === genre;
     const matchesAuthor = author === "all" || b.author === author;
     return matchesText && matchesFilter && matchesGenre && matchesAuthor;
@@ -186,21 +658,63 @@ function render() {
       <div class="info">
         <div class="title">${esc(b.title)}</div>
         <div class="author">${esc(b.author || "Author not listed")}</div>
+        ${BOOK_RECOMMENDATION_NOTES[b.id] ? `<p class="book-recommendation">${esc(BOOK_RECOMMENDATION_NOTES[b.id])}</p>` : ""}
         <div class="meta">Book ID: RN-${String(b.id).padStart(4,"0")}</div>
         <div class="price-line"><span>Reference MRP</span><strong>₹${b.mrp}</strong></div>
         <div class="rental-note">Lending fee: ₹${b.rental} · 14 days</div>
-        <div class="status">${available ? "● Available" : "● Requested"}</div>
-        <button onclick="requestBook(${b.id})">${available ? "Request to book" : "Request anyway"}</button>
+        <div class="status ${st === "Rented out" ? "rented" : ""}">${st === "Rented out" ? "● Rented out" : st === "Requested" ? "● Requested" : "● Available"}</div>
+        ${st === "Rented out" && currentReturnDate(b) ? `<div class="return-date">Expected return: ${esc(formatReturnDate(currentReturnDate(b)))}</div>` : ""}
+        <button onclick="requestBook(${b.id})">${available ? "Request to book" : st === "Rented out" ? "Enquire about this book" : "Request anyway"}</button>
       </div>
     </article>`;
   }).join("");
 }
 
+
+document.getElementById("outside-catalogue-form").addEventListener("submit", function(event) {
+  event.preventDefault();
+  const title = document.getElementById("outside-title").value.trim();
+  const author = document.getElementById("outside-author").value.trim();
+  const readerName = document.getElementById("outside-name").value.trim();
+  const mobile = document.getElementById("outside-mobile").value.trim();
+  const language = document.getElementById("outside-language").value.trim();
+  const notes = document.getElementById("outside-notes").value.trim();
+  if (!title) {
+    document.getElementById("outside-title").focus();
+    return;
+  }
+  if (!readerName) {
+    document.getElementById("outside-name").focus();
+    return;
+  }
+  if (!mobile) {
+    document.getElementById("outside-mobile").focus();
+    return;
+  }
+  const message = [
+    "Hi Reading Nest! I'd like to request a book that isn't currently in your catalogue.",
+    `Book title: ${title}`,
+    author ? `Author: ${author}` : "",
+    `Name: ${readerName}`,
+    `Mobile number: ${mobile}`,
+    language ? `Preferred language / edition: ${language}` : "",
+    notes ? `Additional details: ${notes}` : "",
+    "Please let me know if you’re able to source it. I understand this request is not a guarantee that the book will be added."
+  ].filter(Boolean).join("\n");
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
+});
+
 document.getElementById("search").addEventListener("input", render);
 document.getElementById("availability").addEventListener("change", render);
 document.getElementById("genre").addEventListener("change", render);
 document.getElementById("author").addEventListener("change", render);
+document.querySelectorAll(".quick-filter").forEach(btn => btn.addEventListener("click", () => setQuickFilter(btn.dataset.quick)));
 populateFilters();
+renderReadingShelves(null);
+document.querySelectorAll(".discovery-option").forEach(button => button.addEventListener("click", () => {
+  renderReadingShelves(button.dataset.shelf);
+  document.getElementById("shelves-container").scrollIntoView({behavior:"smooth", block:"start"});
+}));
 render();
 </script>
 

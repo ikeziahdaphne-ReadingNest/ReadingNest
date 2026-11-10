@@ -117,6 +117,23 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
 .contact-grid{grid-template-columns:repeat(2,1fr);max-width:850px;margin:30px auto}.contact-card{text-align:center}.contact-card h3{margin-top:0}.contact-button{display:inline-block;margin-top:14px;text-decoration:none;border-radius:9px;padding:10px 15px;background:var(--accent);color:#fff}
 .catalogue-heading{max-width:1180px;margin:0 auto;padding:48px 18px 8px}.catalogue-heading h2{font-size:32px;margin:0 0 7px}.catalogue-heading p{color:var(--muted);margin:0}
 @media(max-width:760px){.hero{grid-template-columns:1fr;padding-top:42px}.hero h2{font-size:36px}.steps,.plans,.contact-grid{grid-template-columns:1fr}.nav-inner{align-items:flex-start;flex-direction:column}.nav-links{justify-content:flex-start}.section{padding:45px 18px}}
+
+/* Conversion-focused homepage improvements */
+.hero-actions .cta.whatsapp{background:#58745b}
+.hero-actions .cta.whatsapp:hover{background:#405b43}
+.home-shortcuts{max-width:1180px;margin:-12px auto 28px;padding:0 18px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.home-shortcut{display:block;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:15px;padding:18px 20px;box-shadow:0 4px 14px rgba(70,50,35,.05)}
+.home-shortcut strong{display:block;font-size:17px;margin-bottom:6px}
+.home-shortcut span{display:block;color:var(--muted);font-size:13px;line-height:1.5}
+.home-shortcut:hover{border-color:var(--accent2);transform:translateY(-1px)}
+.plan-cta{display:inline-block;text-decoration:none;margin-top:14px;background:var(--good);color:#fff;padding:10px 14px;border-radius:9px;font-size:14px}
+.plan-cta:hover{background:#405b43}
+.borrowing-details{max-width:900px;margin:22px auto 0;padding:18px 20px;background:#fffdf9;border:1px solid var(--line);border-radius:14px;line-height:1.7;color:var(--muted)}
+.borrowing-details strong{color:var(--ink)}
+.floating-whatsapp{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:9px;padding:13px 17px;border-radius:999px;background:#58745b;color:white;text-decoration:none;box-shadow:0 5px 18px rgba(30,50,30,.25);font:600 14px Arial,sans-serif}
+.floating-whatsapp:hover{background:#405b43}
+@media(max-width:760px){.home-shortcuts{grid-template-columns:1fr;gap:9px;margin:0 auto 20px}.home-shortcut{padding:14px 16px}.floating-whatsapp{right:12px;bottom:12px;padding:12px 15px}}
+
 </style>
 </head>
 <body>
@@ -135,8 +152,13 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
 <nav class="nav"><div class="nav-inner"><a class="nav-brand" href="#home">READING NEST</a><div class="nav-links"><a href="#home">Home</a><a href="#find-book">Help me find a book</a><a href="#browse">Browse Books</a><a href="#request-book">Request a Book</a><a href="#plans">Rental Plans</a><a href="#contact">Contact Us</a></div></div></nav>
 
 <section id="home" class="hero">
-  <div><div class="eyebrow">A cozy neighbourhood reading nest</div><h2>Find your next story and bring it home.</h2><p>Welcome to Reading Nest — a cozy home library where stories are shared, books find new readers, and every generation has a place to read. Browse our collection, check the lending price, and request your next story through WhatsApp.</p><div class="hero-actions"><a class="cta" href="#browse">Browse the books</a><a class="cta secondary" href="#plans">View plans</a></div></div>
+  <div><div class="eyebrow">A cozy neighbourhood reading nest</div><h2>Find your next story and bring it home.</h2><p>Welcome to Reading Nest — a cozy home library where stories are shared, books find new readers, and every generation has a place to read. Browse our collection, check the lending price, and request your next story through WhatsApp.</p><div class="hero-actions"><a class="cta" href="#browse" data-track="catalogue">Explore the book catalogue</a><a class="cta secondary" href="#plans">Membership & pricing</a><a class="cta whatsapp" href="https://wa.me/919840888218?text=Hi%20Reading%20Nest!%20I%E2%80%99d%20like%20to%20know%20more%20about%20borrowing%20books." target="_blank" rel="noopener">Ask us on WhatsApp</a></div></div>
   <div class="hero-card"><div class="big">📚</div><strong>Stories for every generation.</strong><p>Curated books for children, teens and adults — all in one neighbourhood collection.</p></div>
+</section>
+<section class="home-shortcuts" aria-label="Quick ways to explore Reading Nest">
+  <a class="home-shortcut" href="#browse" data-track="catalogue"><strong>📚 Explore the catalogue</strong><span>Search books by title, author, genre and availability.</span></a>
+  <a class="home-shortcut" href="#plans"><strong>🌿 Membership & borrowing</strong><span>See the membership price, refundable deposit and lending fees.</span></a>
+  <a class="home-shortcut" href="https://wa.me/919840888218?text=Hi%20Reading%20Nest!%20I%20have%20a%20question%20about%20your%20library." target="_blank" rel="noopener"><strong>💬 Have a question?</strong><span>Message Reading Nest directly on WhatsApp.</span></a>
 </section>
 <section class="section alt"><div class="section-inner"><h2>How Reading Nest works</h2><p class="section-lead">Simple, friendly and local. Choose a book, see its price-based lending fee, and send us a request.</p><div class="steps"><div class="step"><div class="num">01</div><h3>Choose</h3><p>Browse the collection and use the search and filters to find your next read.</p></div><div class="step"><div class="num">02</div><h3>Request</h3><p>Tap “Request to book” and send the pre-filled message to Reading Nest on WhatsApp.</p></div><div class="step"><div class="num">03</div><h3>Read & return</h3><p>Collect your book, enjoy your reading time, and return it within the agreed borrowing period.</p></div></div></div></section>
 <section id="find-book" class="reading-shelves">
@@ -208,7 +230,18 @@ html{scroll-behavior:smooth;scroll-padding-top:78px}
 <div class="plan featured"><span class="badge">Our model</span><h3>Membership</h3><div class="price">₹199</div><div class="duration">14 days</div><ul><li>Borrow 3 books initially, then 2 books at a time</li><li>14-day borrowing period</li><li>Book fee is calculated separately</li><li>Access to the Reading Nest collection</li></ul></div>
 <div class="plan"><h3>Book Lending Fee</h3><div class="price">10% of MRP</div><div class="duration">Per book · 14 days</div><ul><li>Minimum lending fee: ₹20</li><li>Example: ₹499 MRP → ₹50</li><li>Example: ₹599 MRP → ₹60</li><li>Shown on every book card</li></ul></div>
 <div class="plan"><h3>Security Deposit</h3><div class="price">₹400</div><div class="duration">One-time · refundable</div><ul><li>Applies to membership borrowing</li><li>Refundable when membership borrowing ends</li><li>Held as a book-security deposit</li><li>Separate from lending fees</li></ul></div>
-</div><div class="note"><strong>How it works:</strong> Membership ₹199 + refundable ₹400 deposit + the lending fee for each book borrowed. Lending fee = 10% of the book's reference MRP, with a minimum of ₹20, for 14 days.</div></div></section>
+</div>
+<div class="borrowing-details">
+  <strong>Borrowing at a glance</strong><br>
+  • Initial offer: borrow up to 3 books. From the next borrowing cycle: up to 2 books at a time.<br>
+  • Each borrowing period is 14 days.<br>
+  • Lending fee: 10% of the book’s reference MRP, minimum ₹20 per book.<br>
+  • One-time refundable security deposit: ₹400.<br>
+  • Late fee: ₹20 per book for each late return (after the 14-day period).
+</div>
+<div class="note"><strong>How it works:</strong> Membership ₹199 + refundable ₹400 deposit + the lending fee for each book borrowed. Lending fee = 10% of the book's reference MRP, with a minimum of ₹20, for 14 days.</div>
+<div style="text-align:center;margin-top:20px"><a class="plan-cta" href="https://wa.me/919840888218?text=Hi%20Reading%20Nest!%20I%E2%80%99m%20interested%20in%20membership.%20Please%20share%20the%20details." target="_blank" rel="noopener">Enquire about membership on WhatsApp</a></div>
+</div></section>
 <section id="contact" class="section"><div class="section-inner"><h2>Contact Us</h2><p class="section-lead">Have a question, want to join, or need help choosing a book? We’d love to hear from you.</p><div class="contact-grid"><div class="contact-card"><h3>📱 Phone / WhatsApp</h3><p>For book requests, membership questions or general enquiries.</p><p style="margin-top:10px"><strong>+91-9840888218</strong></p><a class="contact-button" href="https://wa.me/9840888218" target="_blank">Chat on WhatsApp</a></div><div class="contact-card"><h3>✉️ Email</h3><p>Write to us and we’ll be happy to help.</p><p style="margin-top:10px"><strong>support@readingnest.in</strong></p><a class="contact-button" href="mailto:support@readingnest.in">Email Reading Nest</a></div></div><div class="note">Looking for a particular story? Browse our catalogue and use the “Request to book” button on the book card.</div></div></section>
 
 <footer>Reading Nest · Stories for every generation.</footer>
@@ -720,19 +753,20 @@ document.querySelectorAll(".discovery-option").forEach(button => button.addEvent
 render();
 </script>
 
-<section class="section" style="margin-top:24px;">
-  <div class="container">
-    <div class="card" style="padding:20px;">
-      <h3>Reading Nest Borrowing Offer</h3>
-      <p><strong>Initial offer:</strong> Members can borrow up to <strong>3 books</strong>.</p>
-      <p><strong>From the next borrowing cycle:</strong> Members can borrow up to <strong>2 books</strong>.</p>
-      <p><strong>Borrowing period:</strong> 14 days per book.</p>
-      <p><strong>Security deposit:</strong> ₹400 refundable deposit.</p>
-      <p><strong>Late fee:</strong> ₹10 per book per day will be charged if a book is returned after the 14-day borrowing period.</p>
 
-    </div>
-  </div>
-</section>
 
+<a class="floating-whatsapp" href="https://wa.me/919840888218?text=Hi%20Reading%20Nest!%20I%E2%80%99d%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener" aria-label="Chat with Reading Nest on WhatsApp">☏ Chat on WhatsApp</a>
+<script>
+  // Record key conversion clicks in GA4 when analytics is available.
+  document.addEventListener("click", function(event) {
+    const link = event.target.closest('a[href*="wa.me"], a[data-track="catalogue"]');
+    if (!link || typeof gtag !== "function") return;
+    const isWhatsApp = link.href.includes("wa.me");
+    gtag("event", isWhatsApp ? "whatsapp_enquiry_click" : "catalogue_cta_click", {
+      link_url: link.href,
+      link_text: (link.innerText || "").trim()
+    });
+  });
+</script>
 </body>
 </html>
